@@ -1,0 +1,21 @@
+services:
+  - postgresql
+before_script:
+  - cp config/database.yml.travis config/database.yml
+
+language: ruby
+rvm:
+  - 2.6.0
+
+addons:
+  postgresql: "11"
+  apt:
+    packages:
+    - postgresql-11
+    - postgresql-client-11
+env:
+  global:
+  - PGPORT=5433
+script:
+  - bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
+  - bundle exec rspec
