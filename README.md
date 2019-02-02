@@ -1,6 +1,6 @@
 # to do task DB Schema
 
-###### 更新日期：2019-01-30 (規劃 DB Schema 與 Model 之間的關聯)
+###### 更新日期：2019-02-02 (規劃 DB Schema 與 Model 之間的關聯)
 
 ## Task
 
@@ -19,7 +19,7 @@
 |------------|----------|--------------|
 | name       | string   | 種類        |
 
-## Category of Task
+## Tasks Categories
 
 | Field      | Type     | Description  |
 |------------|----------|--------------|
