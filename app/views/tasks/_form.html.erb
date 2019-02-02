@@ -1,0 +1,17 @@
+<% if @task.errors.present? %>
+  <ul>
+    <% @task.errors.each do |error, message| %>
+      <li> <%= "#{error.capitalize}  #{message}" %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div>
+  <%= form_for @task do |f| %>
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title %>
+    <%= f.label :content, "Content" %>
+    <%= f.text_area :content %>
+    <%= f.submit %>
+  <% end %>
+</div>
