@@ -39,6 +39,6 @@
 1. 登入 Heroku 並建立 app
 2. heroku git:remote -a app_name
 3. Gemfile 刪除 rails 預設的 gem 'sqlite3'
-4. hide production.rb 的 config.active_storage.service = :local (此 app 用不到)
+4. hide production.rb 的 config.active_storage.service = :local (此 app 暫時用不到)
 5. git push heroku master
 6. heroku run rake db:migrate
