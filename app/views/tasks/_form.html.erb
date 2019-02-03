@@ -1,7 +1,7 @@
 <% if @task.errors.present? %>
   <ul>
     <% @task.errors.each do |error, message| %>
-      <li> <%= "#{error.capitalize}  #{message}" %></li>
+      <li> <%= "#{message}" %></li>
     <% end %>
   </ul>
 <% end %>

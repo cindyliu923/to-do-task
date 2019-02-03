@@ -26,3 +26,12 @@ en:
       create: "Task was failed to create!"
       update: "Task was failed to update!"
       destroy: "Task was deleted!"
+  activerecord:
+    errors:
+      models:
+        task:
+          attributes:
+            title:
+              blank: "Title can't be blank！"
+            content:
+              blank: "Content can't be blank！"

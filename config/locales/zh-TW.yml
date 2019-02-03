@@ -26,3 +26,12 @@ zh-TW:
       update: "更新任務失敗！"
       create: "新增任務失敗！"
       destroy: "任務已刪除！"
+  activerecord:
+    errors:
+      models:
+        task:
+          attributes:
+            title:
+              blank: "任務標題不能空白！"
+            content:
+              blank: "任務內容不能空白！"
