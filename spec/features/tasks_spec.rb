@@ -9,32 +9,32 @@ RSpec.feature "tasks", :type => :feature do
   scenario "Update a task" do
     visit "/tasks/1/edit"
 
-    fill_in "Title", :with => "My edit task"
-    fill_in "Content", :with => "My edit task content"
+    fill_in I18n.t("tasks.title"), :with => "My edit task"
+    fill_in I18n.t("tasks.content"), :with => "My edit task content"
 
-    click_button "Update Task"
+    click_button I18n.t("helpers.submit.update")
 
-    expect(page).to have_text("task was successfully updated")
+    expect(page).to have_text(I18n.t("tasks.notice.update"))
     expect(page).to have_content('My edit task')
   end
 
   scenario "Create a new task" do
     visit "/tasks/new"
 
-    fill_in "Title", :with => "My new task"
-    fill_in "Content", :with => "My new task content"
+    fill_in I18n.t("tasks.title"), :with => "My new task"
+    fill_in I18n.t("tasks.content"), :with => "My new task content"
 
-    click_button "Create Task"
+    click_button I18n.t("helpers.submit.create")
 
-    expect(page).to have_text("task was successfully created")
+    expect(page).to have_text(I18n.t("tasks.notice.create"))
     expect(page).to have_content('My new task')
   end
 
   scenario "Destroy a task" do
     visit "/"
 
-    expect { click_link 'Destroy' }.to change(Task, :count).by(-1)
-    expect(page).to have_text("task was deleted")
+    expect { click_link I18n.t("common.destroy") }.to change(Task, :count).by(-1)
+    expect(page).to have_text(I18n.t("tasks.alert.destroy"))
   end
 
   scenario "See tasks" do
