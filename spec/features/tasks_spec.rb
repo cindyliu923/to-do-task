@@ -37,10 +37,12 @@ RSpec.feature "tasks", :type => :feature do
     expect(page).to have_text(I18n.t("tasks.alert.destroy"))
   end
 
-  scenario "See tasks" do
+  scenario "See tasks and on the right order" do
+    @new_task = FactoryBot.create(:task)
     visit "/"
 
-    expect(page).to have_content('task title 4')
+    expect(find('table tr:nth-child(2)')).to have_content(@new_task.title)
+    expect(find('table tr:nth-child(3)')).to have_content(@task.title)
   end
 
 end
