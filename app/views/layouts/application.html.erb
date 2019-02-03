@@ -10,6 +10,8 @@
   </head>
 
   <body>
+    <%= link_to t("common.locale.zh-TW"), :controller => controller_name, :action => action_name, :locale => "zh-TW" %>
+    <%= link_to t("common.locale.en"), :controller => controller_name, :action => action_name, :locale => "en" %>
     <%= notice %>
     <%= alert %>
     <%= yield %>

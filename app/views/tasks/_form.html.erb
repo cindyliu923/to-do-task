@@ -8,9 +8,9 @@
 
 <div>
   <%= form_for @task do |f| %>
-    <%= f.label :title, "Title" %>
+    <%= f.label :title, t("tasks.title") %>
     <%= f.text_field :title %>
-    <%= f.label :content, "Content" %>
+    <%= f.label :content, t("tasks.content") %>
     <%= f.text_area :content %>
     <%= f.submit %>
   <% end %>

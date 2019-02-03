@@ -1,0 +1,28 @@
+zh-TW:
+  helpers:
+    submit:
+      create: "新增任務"
+      update: "更新任務"
+  common:
+    locale:
+      en: "English"
+      zh-TW: "中文版"
+    title: "標題"
+    show: "內容"
+    edit: "編輯"
+    destroy: "刪除"
+    new: "新增任務"
+    back_index: "回首頁"
+    messages:
+      destroy: "確定要刪除嗎？"
+  tasks:
+    titles: "代辦任務"
+    title: "任務標題"
+    content: "任務內容"
+    notice:
+      update: "成功更新任務！"
+      create: "成功新增任務！"
+    alert:
+      update: "更新任務失敗！"
+      create: "新增任務失敗！"
+      destroy: "任務已刪除！"
