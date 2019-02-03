@@ -47,6 +47,8 @@ group :development, :test do
   gem 'shoulda-matchers', '4.0.0.rc1'
   gem 'rails-controller-testing' # If you are using Rails 5.x
   gem 'database_cleaner'
+  gem 'pry', '0.11.3'
+  gem 'pry-rails', '0.3.6'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
