@@ -1,3 +1,5 @@
 <h3><%= @task.title %></h3>
 <%= simple_format(@task.content) %>
+<%= t("tasks.deadline") %>
+<%= @task.deadline %>
 <%= link_to t("common.back_index"), tasks_path %>

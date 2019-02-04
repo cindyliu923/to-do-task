@@ -19,6 +19,7 @@ zh-TW:
     titles: "代辦任務"
     title: "任務標題"
     content: "任務內容"
+    deadline: "截止時間"
     notice:
       update: "成功更新任務！"
       create: "成功新增任務！"

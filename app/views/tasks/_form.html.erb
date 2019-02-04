@@ -12,6 +12,10 @@
     <%= f.text_field :title %>
     <%= f.label :content, t("tasks.content") %>
     <%= f.text_area :content %>
+    <%= f.label :deadline, t("tasks.deadline") %>
+    <%= f.datetime_select :deadline %>
     <%= f.submit %>
   <% end %>
 </div>
+
+<%= link_to t("common.back_index"), tasks_path %>

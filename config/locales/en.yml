@@ -19,6 +19,7 @@ en:
     titles: "To Do task"
     title: "Task title"
     content: "Task content"
+    deadline: "Deadline"
     notice:
       create: "Task was successfully created!"
       update: "Task was successfully updated!"
