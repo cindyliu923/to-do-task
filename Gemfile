@@ -11,6 +11,7 @@ gem 'pg'
 gem 'rails-i18n', '~> 5.1'
 
 gem 'aasm'
+gem 'ransack'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
