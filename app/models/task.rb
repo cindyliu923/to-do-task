@@ -18,4 +18,8 @@ class Task < ApplicationRecord
     end
   end
 
+  def localized_status
+    I18n.t("tasks.status.#{self.status}")
+  end
+
 end

@@ -2,4 +2,5 @@
 <%= simple_format(@task.content) %>
 <%= t("tasks.deadline") %>
 <%= @task.deadline %>
+<%= @task.localized_status %>
 <%= link_to t("common.back_index"), tasks_path %>

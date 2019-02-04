@@ -8,6 +8,7 @@ zh-TW:
       en: "English"
       zh-TW: "中文版"
     title: "標題"
+    status: "狀態"
     show: "內容"
     edit: "編輯"
     destroy: "刪除"
@@ -20,6 +21,10 @@ zh-TW:
     title: "任務標題"
     content: "任務內容"
     deadline: "截止時間"
+    status:
+        todo: "待處理"
+        doing: "進行中"
+        done: "完成"
     notice:
       update: "成功更新任務！"
       create: "成功新增任務！"

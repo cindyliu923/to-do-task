@@ -8,6 +8,7 @@ en:
       en: "English"
       zh-TW: "中文版"
     title: "Title"
+    status: "Status"
     show: "Show"
     edit: "Edit"
     destroy: "Destroy"
@@ -20,6 +21,10 @@ en:
     title: "Task title"
     content: "Task content"
     deadline: "Deadline"
+    status:
+        todo: "To do"
+        doing: "Doing"
+        done: "Done"
     notice:
       create: "Task was successfully created!"
       update: "Task was successfully updated!"

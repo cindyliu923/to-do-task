@@ -4,6 +4,7 @@
   <tr>
     <th><%= t("common.title") %></th>
     <th><%= link_to t("tasks.deadline"), deadline_order %></th>
+    <th><%= t("common.status") %></th>
     <th><%= t("common.show") %></th>
     <th><%= t("common.edit") %></th>
     <th><%= t("common.destroy") %></th>
@@ -12,6 +13,7 @@
     <tr>
       <td><%= task.title %></td>
       <td><%= task.deadline %></td>
+      <td><%= task.localized_status %></td>
       <td><%= link_to t("common.show"), task_path(task) %></td>
       <td><%= link_to t("common.edit"), edit_task_path(task) %></td>
       <td><%= link_to t("common.destroy"), task_path(task), method: :delete, data:{ confirm: t("common.messages.destroy") } %></td>
