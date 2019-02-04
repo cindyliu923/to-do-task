@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, :only => [:show, :edit, :update, :destroy]
+  before_action :set_task, :only => [:show, :edit, :update, :destroy, :up, :down]
 
   def index
     @tasks = Task.order(sort_by)
@@ -34,6 +34,16 @@ class TasksController < ApplicationController
     @task.destroy
     redirect_to tasks_url
     flash[:alert] = I18n.t("tasks.alert.destroy")
+  end
+
+  def up
+    @task.up!
+    redirect_back(fallback_location: root_path)
+  end
+
+  def down
+    @task.down!
+    redirect_back(fallback_location: root_path)
   end
 
   private

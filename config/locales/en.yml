@@ -14,6 +14,7 @@ en:
     destroy: "Destroy"
     new: "New task"
     back_index: "Back to index"
+    task: "Pick up task"
     messages:
       destroy: "Are you sure?"
   tasks:
@@ -25,6 +26,8 @@ en:
         todo: "To do"
         doing: "Doing"
         done: "Done"
+    up: "Up"
+    down: "Down"
     notice:
       create: "Task was successfully created!"
       update: "Task was successfully updated!"
