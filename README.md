@@ -8,7 +8,7 @@
 |------------|----------|--------------|
 | title      | string   | 標題         |
 | content    | text     | 內容         |
-| due_date   | date     | 結束時間      |
+| deadline   | datetime | 結束時間      |
 | status     | integer  | 狀態         |
 | priority   | integer  | 優先順序      |
 | user_id    | integer  | 使用者        |
