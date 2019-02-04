@@ -81,3 +81,8 @@ Shoulda::Matchers.configure do |config|
     with.library :active_model
   end
 end
+
+require 'support/date_time_select_helpers'
+RSpec.configure do |config|
+  config.include Features::DateTimeSelectHelpers, type: :feature
+end
