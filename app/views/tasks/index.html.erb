@@ -1,5 +1,13 @@
 <h1><%= t("tasks.titles") %></h1>
 
+<%= search_form_for @q do |f| %>
+  <%= f.label t("common.title") %>
+  <%= f.search_field :title_cont %>
+  <%= f.label t("common.status") %>
+  <%= f.select :status_eq , options_for_select(Task.statuses.map{|k,v| [I18n.t("tasks.status.#{k}"), v] }), :include_blank => true %>
+  <%= f.submit %>
+<% end %>
+
 <table>
   <tr>
     <th><%= t("common.title") %></th>
