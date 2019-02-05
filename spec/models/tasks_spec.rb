@@ -49,4 +49,44 @@ RSpec.describe Task, :type => :model do
     expect(task).not_to transition_from(:doing).to(:todo).on_event(:down)
   end
 
+  it "search task by status" do
+    todo_task = FactoryBot.create(:task)
+    doing_task = FactoryBot.create(:task, :doing)
+    done_task = FactoryBot.create(:task, :done)
+
+    @q = Task.ransack({"status_eq"=>"0"})
+    @tasks = @q.result.order(created_at: :desc)
+    expect(@tasks).to eq([todo_task])
+
+    @q = Task.ransack({"status_eq"=>"1"})
+    @tasks = @q.result.order(created_at: :desc)
+    expect(@tasks).to eq([doing_task])
+
+    @q = Task.ransack({"status_eq"=>"2"})
+    @tasks = @q.result.order(created_at: :desc)
+    expect(@tasks).to eq([done_task])
+  end
+
+  it "search task by title" do
+    task_13 = FactoryBot.create(:task)
+    task_14 = FactoryBot.create(:task)
+    task_15 = FactoryBot.create(:task)
+
+    @q = Task.ransack({"title_cont"=>"13"})
+    @tasks = @q.result.order(created_at: :desc)
+    expect(@tasks).to eq([task_13])
+
+    @q = Task.ransack({"title_cont"=>"14"})
+    @tasks = @q.result.order(created_at: :desc)
+    expect(@tasks).to eq([task_14])
+
+    @q = Task.ransack({"title_cont"=>"15"})
+    @tasks = @q.result.order(created_at: :desc)
+    expect(@tasks).to eq([task_15])
+
+    @q = Task.ransack({"title_cont"=>"task"})
+    @tasks = @q.result.order(created_at: :desc)
+    expect(@tasks).to eq([task_15,task_14,task_13])
+  end
+
 end
