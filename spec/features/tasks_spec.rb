@@ -64,4 +64,21 @@ RSpec.feature "tasks", :type => :feature do
     expect(find('table tr:nth-child(4)')).to have_content(deadline_earlier_task.title)
   end
 
+  scenario "Search tasks by title, status and can change task status" do
+    visit "/"
+    fill_in I18n.t("common.title"), :with => "task"
+    select I18n.t("tasks.status.todo"), :from => I18n.t("common.status")
+
+    expect(page).to have_content('task title 9')
+    expect(page).to have_content(I18n.t("tasks.status.todo"))
+
+    click_link I18n.t("tasks.up")
+    expect(find('table tr:nth-child(2)')).to have_content(I18n.t("tasks.status.doing"))
+    expect(find('table tr:nth-child(2)')).to have_content(I18n.t("tasks.down"))
+
+    click_link I18n.t("tasks.down")
+    expect(find('table tr:nth-child(2)')).to have_content(I18n.t("tasks.status.done"))
+    expect(find('table tr:nth-child(2)')).to have_content('')
+  end
+
 end

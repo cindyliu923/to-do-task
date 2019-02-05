@@ -7,6 +7,8 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'support/factory_bot'
+require 'aasm/rspec'
+require 'support/date_time_select_helpers'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -82,7 +84,6 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-require 'support/date_time_select_helpers'
 RSpec.configure do |config|
   config.include Features::DateTimeSelectHelpers, type: :feature
 end
