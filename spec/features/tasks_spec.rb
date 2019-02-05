@@ -69,14 +69,23 @@ RSpec.feature "tasks", :type => :feature do
     fill_in I18n.t("common.title"), :with => "task"
     select I18n.t("tasks.status.todo"), :from => I18n.t("common.status")
 
-    expect(page).to have_content('task title 9')
-    expect(page).to have_content(I18n.t("tasks.status.todo"))
+    click_button I18n.t('ransack.search')
+    expect(find('table tr:nth-child(2)')).to have_content('task title 9')
+    expect(find('table tr:nth-child(2)')).to have_content(I18n.t("tasks.status.todo"))
 
     click_link I18n.t("tasks.up")
+    select I18n.t("tasks.status.doing"), :from => I18n.t("common.status")
+    click_button I18n.t('ransack.search')
+
+    expect(find('table tr:nth-child(2)')).to have_content('task title 9')
     expect(find('table tr:nth-child(2)')).to have_content(I18n.t("tasks.status.doing"))
     expect(find('table tr:nth-child(2)')).to have_content(I18n.t("tasks.down"))
 
     click_link I18n.t("tasks.down")
+    select I18n.t("tasks.status.done"), :from => I18n.t("common.status")
+    click_button I18n.t('ransack.search')
+
+    expect(find('table tr:nth-child(2)')).to have_content('task title 9')
     expect(find('table tr:nth-child(2)')).to have_content(I18n.t("tasks.status.done"))
     expect(find('table tr:nth-child(2)')).to have_content('')
   end
