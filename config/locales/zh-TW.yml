@@ -15,6 +15,7 @@ zh-TW:
     new: "新增任務"
     back_index: "回首頁"
     task: "撿任務"
+    priority: "優先順序"
     messages:
       destroy: "確定要刪除嗎？"
   tasks:
@@ -26,6 +27,10 @@ zh-TW:
         todo: "待處理"
         doing: "進行中"
         done: "完成"
+    priority:
+      low: "低"
+      medium: "中"
+      high: "高"
     up: "撿起任務"
     down: "放下任務"
     notice:

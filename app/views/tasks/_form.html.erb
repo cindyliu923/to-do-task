@@ -14,6 +14,8 @@
     <%= f.text_area :content %>
     <%= f.label :deadline, t("tasks.deadline") %>
     <%= f.datetime_select :deadline %>
+    <%= f.label :priority, t("common.priority") %>
+    <%= f.select :priority, options_for_select(Task.select_options_by_priority) %>
     <%= f.submit %>
   <% end %>
 </div>

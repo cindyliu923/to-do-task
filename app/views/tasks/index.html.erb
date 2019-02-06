@@ -4,7 +4,7 @@
   <%= f.label :title_cont, t("common.title") %>
   <%= f.search_field :title_cont %>
   <%= f.label :status_eq, t("common.status") %>
-  <%= f.select :status_eq , options_for_select(Task.statuses.map{|k,v| [I18n.t("tasks.status.#{k}"), v] }), :include_blank => true %>
+  <%= f.select :status_eq , options_for_select(Task.select_options_by_status), :include_blank => true %>
   <%= f.submit %>
 <% end %>
 
@@ -13,6 +13,7 @@
     <th><%= t("common.title") %></th>
     <th><%= sort_link(@q, :deadline, t("tasks.deadline"), default_order: :asc) %></th>
     <th><%= t("common.status") %></th>
+    <th><%= t("common.priority") %></th>
     <th><%= t("common.show") %></th>
     <th><%= t("common.edit") %></th>
     <th><%= t("common.destroy") %></th>
@@ -23,6 +24,7 @@
       <td><%= task.title %></td>
       <td><%= task.deadline %></td>
       <td><%= task.localized_status %></td>
+      <td><%= task.localized_priority %></td>
       <td><%= link_to t("common.show"), task_path(task) %></td>
       <td><%= link_to t("common.edit"), edit_task_path(task) %></td>
       <td><%= link_to t("common.destroy"), task_path(task), method: :delete, data:{ confirm: t("common.messages.destroy") } %></td>
