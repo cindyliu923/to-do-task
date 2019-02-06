@@ -1,7 +1,21 @@
-<h3><%= @task.title %></h3>
-<%= simple_format(@task.content) %>
-<%= t("tasks.deadline") %>
-<%= @task.deadline %>
-<%= @task.localized_status %>
-<%= @task.localized_priority %>
-<%= link_to t("common.back_index"), tasks_path %>
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col align-self-center">
+        <div class="p-4"></div>
+        <div class="card text-center">
+          <h3 class="card-header"><%= @task.title %></h3>
+          <div class="card-body">
+            <h5 class="card-title"><%= t("common.status") %>: <%= @task.localized_status %>, <%= t("common.priority") %>: <%= @task.localized_priority %></h5>
+            <p class="card-text"><%= simple_format(@task.content) %></p>
+            <footer class="blockquote-footer"><%= t("tasks.deadline") %>: <%= @task.deadline %></footer>
+          </div>
+        </div>
+        <br>
+        <div class="text-right">
+          <%= link_to t("common.back_index"), tasks_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

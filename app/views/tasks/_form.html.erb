@@ -1,23 +1,37 @@
-<% if @task.errors.present? %>
-  <ul>
-    <% @task.errors.each do |error, message| %>
-      <li> <%= "#{message}" %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<div>
-  <%= form_for @task do |f| %>
-    <%= f.label :title, t("tasks.title") %>
-    <%= f.text_field :title %>
-    <%= f.label :content, t("tasks.content") %>
-    <%= f.text_area :content %>
-    <%= f.label :deadline, t("tasks.deadline") %>
-    <%= f.datetime_select :deadline %>
-    <%= f.label :priority, t("common.priority") %>
-    <%= f.select :priority, options_for_select(Task.select_options_by_priority) %>
-    <%= f.submit %>
-  <% end %>
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col align-self-center">
+        <div class="p-4"></div>
+        <% if @task.errors.present? %>
+          <ul>
+            <% @task.errors.each do |error, message| %>
+              <li> <%= "#{message}" %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        <div class="form container">
+          <%= form_for @task do |f| %>
+            <div class="form-group">
+              <%= f.label :title, t("tasks.title") %>
+              <%= f.text_field :title, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :content, t("tasks.content") %>
+              <%= f.text_area :content, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :deadline, t("tasks.deadline") %>
+              <%= f.datetime_select :deadline %>
+            </div>
+            <div class="form-group">
+              <%= f.label :priority, t("common.priority") %>
+              <%= f.select :priority, options_for_select(Task.select_options_by_priority),{}, class: "form-control" %>
+            </div>
+            <%= f.submit class: "btn btn-outline-success" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= link_to t("common.back_index"), tasks_path %>

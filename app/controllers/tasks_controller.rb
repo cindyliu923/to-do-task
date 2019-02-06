@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, :only => [:show, :edit, :update, :destroy, :up, :down]
-  before_action :search_task, :only =>[:index, :new, :show, :edit]
+  before_action :search_task, :except =>[:up, :down]
 
   def index
     @tasks = @q.result.order(created_at: :desc).page(params[:page]).per(10)
