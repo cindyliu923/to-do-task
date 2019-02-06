@@ -12,11 +12,13 @@ RSpec.feature "tasks", :type => :feature do
     fill_in I18n.t("tasks.title"), :with => "My edit task"
     fill_in I18n.t("tasks.content"), :with => "My edit task content"
     select_date_and_time(2.days.from_now, from:"task_deadline")
+    select I18n.t("tasks.priority.medium"), :from => I18n.t("common.priority")
 
     click_button I18n.t("helpers.submit.update")
 
     expect(page).to have_text(I18n.t("tasks.notice.update"))
     expect(page).to have_content('My edit task')
+    expect(page).to have_content(I18n.t("tasks.priority.medium"))
   end
 
   scenario "Create a new task" do
@@ -25,11 +27,13 @@ RSpec.feature "tasks", :type => :feature do
     fill_in I18n.t("tasks.title"), :with => "My new task"
     fill_in I18n.t("tasks.content"), :with => "My new task content"
     select_date_and_time(2.days.from_now, from:"task_deadline")
+    select I18n.t("tasks.priority.medium"), :from => I18n.t("common.priority")
 
     click_button I18n.t("helpers.submit.create")
 
     expect(page).to have_text(I18n.t("tasks.notice.create"))
     expect(page).to have_content('My new task')
+    expect(page).to have_content(I18n.t("tasks.priority.medium"))
   end
 
   scenario "Destroy a task" do
@@ -88,6 +92,23 @@ RSpec.feature "tasks", :type => :feature do
     expect(find('table tr:nth-child(2)')).to have_content('task title 9')
     expect(find('table tr:nth-child(2)')).to have_content(I18n.t("tasks.status.done"))
     expect(find('table tr:nth-child(2)')).to have_content('')
+  end
+
+  scenario "Change tasks order by priority" do
+    medium_task = FactoryBot.create(:task, :medium)
+    high_task = FactoryBot.create(:task, :high)
+    visit "/"
+    click_link I18n.t("common.priority")
+
+    expect(find('table tr:nth-child(2)')).to have_content(high_task.title)
+    expect(find('table tr:nth-child(3)')).to have_content(medium_task.title)
+    expect(find('table tr:nth-child(4)')).to have_content(@task.title)
+
+    click_link I18n.t("tasks.deadline")
+
+    expect(find('table tr:nth-child(2)')).to have_content(@task.title)
+    expect(find('table tr:nth-child(3)')).to have_content(medium_task.title)
+    expect(find('table tr:nth-child(4)')).to have_content(high_task.title)
   end
 
 end

@@ -68,25 +68,13 @@ RSpec.describe Task, :type => :model do
   end
 
   it "search task by title" do
-    task_13 = FactoryBot.create(:task)
-    task_14 = FactoryBot.create(:task)
-    task_15 = FactoryBot.create(:task)
-
-    @q = Task.ransack({"title_cont"=>"13"})
-    @tasks = @q.result.order(created_at: :desc)
-    expect(@tasks).to eq([task_13])
-
-    @q = Task.ransack({"title_cont"=>"14"})
-    @tasks = @q.result.order(created_at: :desc)
-    expect(@tasks).to eq([task_14])
-
-    @q = Task.ransack({"title_cont"=>"15"})
-    @tasks = @q.result.order(created_at: :desc)
-    expect(@tasks).to eq([task_15])
+    task_1 = FactoryBot.create(:task)
+    task_2 = FactoryBot.create(:task)
+    task_3 = FactoryBot.create(:task)
 
     @q = Task.ransack({"title_cont"=>"task"})
     @tasks = @q.result.order(created_at: :desc)
-    expect(@tasks).to eq([task_15,task_14,task_13])
+    expect(@tasks).to eq([task_3,task_2,task_1])
   end
 
 end

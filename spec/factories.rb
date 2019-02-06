@@ -4,6 +4,7 @@ FactoryBot.define do
     sequence(:content) { |n| "task content #{n}" }
     deadline { 2.days.from_now }
     status { :todo }
+    priority { :low }
 
     trait :deadline_later do
       deadline { 20.days.from_now }
@@ -19,6 +20,14 @@ FactoryBot.define do
 
     trait :done do
       status { :done }
+    end
+
+    trait :medium do
+      priority { :medium }
+    end
+
+    trait :high do
+      priority { :high }
     end
 
   end
