@@ -1,6 +1,7 @@
 services:
   - postgresql
 before_script:
+  - sudo systemsetup -settimezone Asia/Taipei
   - cp config/database.yml.travis config/database.yml
 
 language: ruby
