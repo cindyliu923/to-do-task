@@ -1,7 +1,8 @@
 services:
   - postgresql
+before_install:
+  - export TZ=Asia/Taipei
 before_script:
-  - sudo systemsetup -settimezone Asia/Taipei
   - cp config/database.yml.travis config/database.yml
 
 language: ruby
