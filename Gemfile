@@ -13,6 +13,7 @@ gem 'rails-i18n', '~> 5.1'
 gem 'aasm'
 gem 'ransack'
 gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
 

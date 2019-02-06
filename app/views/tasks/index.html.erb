@@ -27,9 +27,10 @@
         <div class="text-center">
           <%= link_to t("common.new"), new_task_path, class: "btn btn-outline-success" %>
         </div>
-        <nav class="container">
-          <%= paginate @tasks %>
-        </nav>
+        <br>
+        <div class="container pagination justify-content-center" >
+          <%= paginate @tasks, theme: 'twitter-bootstrap-4' %>
+        </div>
       </div>
     </div>
   </div>
