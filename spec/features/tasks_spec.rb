@@ -12,7 +12,7 @@ RSpec.feature "tasks", :type => :feature do
 
     fill_in I18n.t("tasks.title"), :with => "My edit task"
     fill_in I18n.t("tasks.content"), :with => "My edit task content"
-    select_date_and_time(deadline, from:"task_deadline")
+    fill_in "task[deadline]", :with => deadline
     select I18n.t("tasks.priority.medium"), :from => I18n.t("common.priority")
 
     click_button I18n.t("helpers.submit.update")
@@ -29,7 +29,7 @@ RSpec.feature "tasks", :type => :feature do
 
     fill_in I18n.t("tasks.title"), :with => "My new task"
     fill_in I18n.t("tasks.content"), :with => "My new task content"
-    select_date_and_time(deadline, from:"task_deadline")
+    fill_in "task[deadline]", :with => deadline
     select I18n.t("tasks.priority.medium"), :from => I18n.t("common.priority")
 
     click_button I18n.t("helpers.submit.create")
