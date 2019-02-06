@@ -9,7 +9,6 @@ zh-TW:
       zh-TW: "中文版"
     title: "標題"
     status: "狀態"
-    show: "內容"
     edit: "編輯"
     destroy: "刪除"
     new: "新增任務"

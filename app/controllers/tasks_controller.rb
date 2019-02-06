@@ -1,8 +1,8 @@
 class TasksController < ApplicationController
   before_action :set_task, :only => [:show, :edit, :update, :destroy, :up, :down]
+  before_action :search_task, :only =>[:index, :new, :show, :edit]
 
   def index
-    @q = Task.ransack(params[:q])
     @tasks = @q.result.order(created_at: :desc).page(params[:page]).per(10)
   end
 
@@ -51,6 +51,10 @@ class TasksController < ApplicationController
 
   def set_task
     @task = Task.find(params[:id])
+  end
+
+  def search_task
+    @q = Task.ransack(params[:q])
   end
 
   def task_params

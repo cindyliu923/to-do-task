@@ -9,7 +9,6 @@ en:
       zh-TW: "中文版"
     title: "Title"
     status: "Status"
-    show: "Show"
     edit: "Edit"
     destroy: "Destroy"
     new: "New task"
