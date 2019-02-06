@@ -17,6 +17,10 @@ gem 'bootstrap4-kaminari-views'
 gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-datetimepicker'
+end
+
 gem 'ffaker'
 
 # Use Puma as the app server

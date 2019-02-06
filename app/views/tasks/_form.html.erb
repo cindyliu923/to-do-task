@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
               <%= f.label :deadline, t("tasks.deadline") %>
-              <%= f.datetime_select :deadline %>
+              <%= f.text_field :deadline, id: 'datetimepicker', class: "form-control" %>
             </div>
             <div class="form-group">
               <%= f.label :priority, t("common.priority") %>
@@ -35,3 +35,7 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $('#datetimepicker').datetimepicker();
+</script>
