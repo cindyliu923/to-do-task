@@ -10,10 +10,41 @@
   </head>
 
   <body>
-    <%= link_to t("common.locale.zh-TW"), :controller => controller_name, :action => action_name, :locale => "zh-TW" %>
-    <%= link_to t("common.locale.en"), :controller => controller_name, :action => action_name, :locale => "en" %>
-    <%= notice %>
-    <%= alert %>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #227700;">
+      <%= link_to t("tasks.titles"), root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-link active"><%= link_to t("common.locale.zh-TW"), :controller => :application, :action => :change_locale, :locale => "zh-TW"  %></li>
+          <li class="nav-link active"><%= link_to t("common.locale.en"), :controller => :application, :action => :change_locale, :locale => "en" %></li>
+        </ul>
+      </div>
+    </nav>
+
+    <% if flash[:notice] %>
+      <div class="container">
+        <div class="row">
+          <div class="alert alert-success alert-dismissible alert-fixed">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <%= notice %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class="container">
+        <div class="row">
+          <div class="alert alert-danger alert-dismissible alert-fixed">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <%= alert %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
