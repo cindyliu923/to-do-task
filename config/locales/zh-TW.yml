@@ -49,3 +49,10 @@ zh-TW:
               blank: "任務標題不能空白！"
             content:
               blank: "任務內容不能空白！"
+  views:
+    pagination:
+      first: "&laquo; 第一頁"
+      last: "最後一頁 &raquo;"
+      previous: "&lsaquo; 前一頁"
+      next: "下一頁 &rsaquo;"
+      truncate: "&hellip;"
