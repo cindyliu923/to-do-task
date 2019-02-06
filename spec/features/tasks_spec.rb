@@ -8,31 +8,35 @@ RSpec.feature "tasks", :type => :feature do
 
   scenario "Update a task" do
     visit "/tasks/1/edit"
+    deadline = Timecop.travel('2019-02-10 15:20:00 +0800')
 
     fill_in I18n.t("tasks.title"), :with => "My edit task"
     fill_in I18n.t("tasks.content"), :with => "My edit task content"
-    select_date_and_time(2.days.from_now, from:"task_deadline")
+    select_date_and_time(deadline, from:"task_deadline")
     select I18n.t("tasks.priority.medium"), :from => I18n.t("common.priority")
 
     click_button I18n.t("helpers.submit.update")
 
     expect(page).to have_text(I18n.t("tasks.notice.update"))
     expect(page).to have_content('My edit task')
+    expect(page).to have_content(deadline)
     expect(page).to have_content(I18n.t("tasks.priority.medium"))
   end
 
   scenario "Create a new task" do
     visit "/tasks/new"
+    deadline = Timecop.travel('2019-02-10 15:20:00 +0800')
 
     fill_in I18n.t("tasks.title"), :with => "My new task"
     fill_in I18n.t("tasks.content"), :with => "My new task content"
-    select_date_and_time(2.days.from_now, from:"task_deadline")
+    select_date_and_time(deadline, from:"task_deadline")
     select I18n.t("tasks.priority.medium"), :from => I18n.t("common.priority")
 
     click_button I18n.t("helpers.submit.create")
 
     expect(page).to have_text(I18n.t("tasks.notice.create"))
     expect(page).to have_content('My new task')
+    expect(page).to have_content(deadline)
     expect(page).to have_content(I18n.t("tasks.priority.medium"))
   end
 
