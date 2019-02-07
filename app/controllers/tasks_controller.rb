@@ -13,7 +13,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @task.user = User.first
+    @task.user = current_user
     if @task.save
       flash[:notice] = I18n.t("tasks.notice.create")
       redirect_to tasks_url
@@ -56,7 +56,7 @@ class TasksController < ApplicationController
   end
 
   def search_task
-    @q = Task.ransack(params[:q])
+    @q = current_user.tasks.ransack(params[:q])
   end
 
   def task_params
