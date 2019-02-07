@@ -4,6 +4,7 @@ RSpec.feature "tasks", :type => :feature do
 
   before(:each) do
     @task = FactoryBot.create(:task)
+    log_in(@task)
   end
 
   scenario "Update a task" do
@@ -48,7 +49,7 @@ RSpec.feature "tasks", :type => :feature do
   end
 
   scenario "See tasks and default order by created at" do
-    @new_task = FactoryBot.create(:task)
+    @new_task = FactoryBot.create(:task, user: @task.user)
     visit "/"
 
     expect(find('table tr:nth-child(2)')).to have_content(@new_task.title)
@@ -56,8 +57,8 @@ RSpec.feature "tasks", :type => :feature do
   end
 
   scenario "Change tasks order by deadline" do
-    deadline_earlier_task = FactoryBot.create(:task, :deadline_earlier)
-    deadline_later_task = FactoryBot.create(:task, :deadline_later)
+    deadline_earlier_task = FactoryBot.create(:task, :deadline_earlier, user: @task.user)
+    deadline_later_task = FactoryBot.create(:task, :deadline_later, user: @task.user)
     visit "/"
     click_link I18n.t("tasks.deadline")
 
@@ -99,8 +100,8 @@ RSpec.feature "tasks", :type => :feature do
   end
 
   scenario "Change tasks order by priority" do
-    medium_task = FactoryBot.create(:task, :medium)
-    high_task = FactoryBot.create(:task, :high)
+    medium_task = FactoryBot.create(:task, :medium, user: @task.user)
+    high_task = FactoryBot.create(:task, :high, user: @task.user)
     visit "/"
     click_link I18n.t("common.priority")
 
