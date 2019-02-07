@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-8 col-md-6 col-lg-4 p-2">
+      <div class="p-5"></div>
+      <h1><%= t("users.login") %></h1>
+        <%= form_for :session, url: '/login' do |f| %>
+          <div class="field">
+            <%= f.email_field :email, placeholder: t("users.email"), autofocus: true, style: "width:100%" %>
+          </div>
+          <br/>
+          <div class="field">
+            <%= f.password_field :password, placeholder: t("users.password"), autocomplete: "off", style: "width:100%" %>
+          </div>
+          <br />
+          <div class="actions">
+            <%= f.submit t("users.login"), class: "btn btn-light btn-lg", style: "float:right" %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

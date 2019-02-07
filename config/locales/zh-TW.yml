@@ -41,10 +41,13 @@ zh-TW:
       destroy: "任務已刪除！"
   users:
     signup: "註冊"
+    login: "登入"
     name: "名稱"
     email: "電子信箱"
     password: "密碼"
     password_confirmation: "密碼確認"
+    alert:
+      login: "信箱或密碼錯誤！"
   activerecord:
     errors:
       models:

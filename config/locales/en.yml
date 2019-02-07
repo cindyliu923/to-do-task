@@ -41,10 +41,13 @@ en:
       destroy: "Task was deleted!"
   users:
     signup: "Sign Up"
+    login: "Log In"
     name: "Name"
     email: "Email"
     password: "Password"
     password_confirmation: "Password confirmation"
+    alert:
+      login: "Invalid email or password!"
   activerecord:
     errors:
       models:
