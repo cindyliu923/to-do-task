@@ -4,18 +4,21 @@ RSpec.describe Task, :type => :model do
   subject { described_class.new }
   it { should define_enum_for(:status).with_values([:todo, :doing, :done]) }
   it { should define_enum_for(:priority).with_values([:low, :medium, :high]) }
+  let(:user){FactoryBot.create(:user)}
 
   it "is valid with valid attributes" do
     subject.title = "task title"
     subject.content = "task content"
     subject.deadline = 2.days.from_now
     subject.priority = :low
+    subject.user = user
     expect(subject).to be_valid
   end
 
   it "is not valid without title and content" do
     subject.deadline = 2.days.from_now
     subject.priority = :low
+    subject.user = user
     expect(subject).to_not be_valid
   end
 
@@ -23,6 +26,7 @@ RSpec.describe Task, :type => :model do
     subject.content = "task content"
     subject.deadline = 2.days.from_now
     subject.priority = :low
+    subject.user = user
     expect(subject).to_not be_valid
   end
 
@@ -30,6 +34,7 @@ RSpec.describe Task, :type => :model do
     subject.title = "task title"
     subject.deadline = 2.days.from_now
     subject.priority = :low
+    subject.user = user
     expect(subject).to_not be_valid
   end
 

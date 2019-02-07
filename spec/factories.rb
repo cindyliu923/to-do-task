@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :user do
-    
+    sequence(:name) { |n| "Default_#{n}" }
+    sequence(:email) { |n| "default_#{n}@example.com" }
   end
   factory :task do
     sequence(:title) { |n| "task title #{n}" }
@@ -8,6 +9,7 @@ FactoryBot.define do
     deadline { 2.days.from_now }
     status { :todo }
     priority { :low }
+    association :user
 
     trait :deadline_later do
       deadline { 20.days.from_now }

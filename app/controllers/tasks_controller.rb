@@ -12,6 +12,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.user = User.first
     if @task.save
       flash[:notice] = I18n.t("tasks.notice.create")
       redirect_to tasks_url
