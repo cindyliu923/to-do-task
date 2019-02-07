@@ -28,11 +28,11 @@
 
 ## User
 
-| Field    | Type     | Description  |
-|----------|----------|--------------|
-| name     | string   | 姓名         |
-| email    | string   | 電子信箱      |
-| password | string   | 密碼         |
+| Field           | Type     | Description  |
+|-----------------|----------|--------------|
+| name            | string   | 姓名         |
+| email           | string   | 電子信箱      |
+| password_digest | string   | 密碼         |
 
 ## Deploy
 
