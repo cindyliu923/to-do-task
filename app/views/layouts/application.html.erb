@@ -17,12 +17,19 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto text-white">
-          <%= search_form_for @q do |f| %>
-            <%= f.label :title_cont, t("common.title") %>
-            <%= f.search_field :title_cont %>
-            <%= f.label :status_eq, t("common.status") %>
-            <%= f.select :status_eq , options_for_select(Task.select_options_by_status), :include_blank => true %>
-            <%= f.submit class: "btn btn-warning btn-sm" %>
+          <% if current_user %>
+            <%= search_form_for @q do |f| %>
+              <%= f.label :title_cont, t("common.title") %>
+              <%= f.search_field :title_cont %>
+              <%= f.label :status_eq, t("common.status") %>
+              <%= f.select :status_eq , options_for_select(Task.select_options_by_status), :include_blank => true %>
+              <%= f.submit class: "btn btn-warning btn-sm" %>
+            <% end %>
+            <li class="nav-item nav-link">Hi, <%= current_user.name %></li>
+            <li class="nav-item"><%= link_to('Log out', logout_path, class: "nav-link") %></li>
+          <% else %>
+            <li class="nav-item"><%= link_to('Sign up', signup_path, class: "nav-link") %></li>
+            <li class="nav-item"><%= link_to('Log in', login_path, class: "nav-link") %></li>
           <% end %>
         </ul>
         <ul class="navbar-nav ml-auto">
