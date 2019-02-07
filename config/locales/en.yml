@@ -39,6 +39,12 @@ en:
       create: "Task was failed to create!"
       update: "Task was failed to update!"
       destroy: "Task was deleted!"
+  users:
+    signup: "Sign Up"
+    name: "Name"
+    email: "Email"
+    password: "Password"
+    password_confirmation: "Password confirmation"
   activerecord:
     errors:
       models:
@@ -48,3 +54,11 @@ en:
               blank: "Title can't be blank！"
             content:
               blank: "Content can't be blank！"
+        user:
+          attributes:
+            name:
+              blank: "Name can't be blank！"
+            email:
+              blank: "Email can't be blank！"
+            password:
+              blank: "Password can't be blank！"
