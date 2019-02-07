@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   include AASM
+  belongs_to :user
 
   validates :title, :content, presence: true
 
