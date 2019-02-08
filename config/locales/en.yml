@@ -11,7 +11,6 @@ en:
     status: "Status"
     edit: "Edit"
     destroy: "Destroy"
-    new: "New task"
     back_index: "Back to index"
     task: "Pick up task"
     priority: "Priority"
@@ -23,6 +22,7 @@ en:
     titles: "To Do task"
     title: "Task title"
     content: "Task content"
+    new: "New task"
     deadline: "Deadline"
     status:
         todo: "To do"
@@ -43,6 +43,7 @@ en:
       destroy: "Task was deleted!"
       permit: "Not allow!"
   users:
+    new: "New user"
     signup: "Sign Up"
     login: "Log In"
     name: "Name"

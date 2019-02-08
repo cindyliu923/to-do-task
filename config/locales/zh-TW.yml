@@ -11,7 +11,6 @@ zh-TW:
     status: "狀態"
     edit: "編輯"
     destroy: "刪除"
-    new: "新增任務"
     back_index: "回首頁"
     task: "撿任務"
     priority: "優先順序"
@@ -23,6 +22,7 @@ zh-TW:
     titles: "代辦任務"
     title: "任務標題"
     content: "任務內容"
+    new: "新增任務"
     deadline: "截止時間"
     status:
         todo: "待處理"
@@ -43,6 +43,7 @@ zh-TW:
       destroy: "任務已刪除！"
       permit: "不能允許進入此頁!"
   users:
+    new: "新增使用者"
     signup: "註冊"
     login: "登入"
     name: "名稱"
