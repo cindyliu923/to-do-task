@@ -17,6 +17,10 @@
               <%= f.text_field :name, class: "form-control" %>
             </div>
             <div class="form-group">
+              <%= f.label :role, t("users.roles") %>
+              <%= f.select :role, options_for_select(User.select_options_by_role,@user.role),{}, class: "form-control" %>
+            </div>
+            <div class="form-group">
               <%= f.label :email, t("users.email") %>
               <%= f.email_field :email, class: "form-control" %>
             </div>

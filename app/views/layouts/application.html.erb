@@ -12,7 +12,9 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #227700;">
       <%= link_to t("tasks.titles"), root_path, class: "navbar-brand" %>
-      <%= link_to t("admin.title"), admin_users_path, class: "navbar-brand" %>
+      <% if can? :manage, :all %>
+        <%= link_to t("admin.title"), admin_users_path, class: "navbar-brand" %>
+      <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

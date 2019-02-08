@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  before_action { authorize! :manage, :all }
   before_action :authorize
   before_action :set_user, :only => [:show, :edit, :update, :destroy]
   before_action :search_task
@@ -54,7 +55,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :role)
   end
 
 end

@@ -7,7 +7,7 @@
           <h3 class="card-header"><%= @user.name %></h3>
           <div class="card-body">
             <h5 class="card-title"><%= @user.email %></h5>
-            <p class="card-text"> </p>
+            <p class="card-text"><%= @user.localized_role %></p>
             <footer class="blockquote-footer"><%= t("users.tasks_count") %>: <%= @user.tasks_count %></footer>
           </div>
         </div>

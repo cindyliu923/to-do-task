@@ -51,6 +51,10 @@ en:
     password: "Password"
     password_confirmation: "Password confirmation"
     tasks_count: "Tasks count"
+    roles: "Role"
+    role:
+      admin: "Admin"
+      normal: "Normal"
     notice:
       create: "User was successfully created!"
       update: "User was successfully updated!"
