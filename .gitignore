@@ -31,3 +31,5 @@
 /config/master.key
 
 /config/*.yml
+
+docker-compose.yml
