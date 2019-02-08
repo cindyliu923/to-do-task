@@ -5,7 +5,8 @@ namespace :dev do
     10.times do |i|
       user = User.create!(
         name: FFaker::NameJA.name,
-        email: "user#{i}@example.co"
+        email: "user#{i}@example.co",
+        password: "123456"
       )
     end
 
@@ -15,7 +16,7 @@ namespace :dev do
 
   task fake_task: :environment do
     # Task.destroy_all
-    100.times do |i|
+    300.times do |i|
       Task.create!(
         title: FFaker::LoremJA.word,
         content: FFaker::LoremJA.sentence,
