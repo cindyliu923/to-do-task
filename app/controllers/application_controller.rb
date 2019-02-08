@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   helper_method :current_user
 
+  def change_locale
+    set_locale
+    redirect_to request.referer || root_url
+  end
+
   protected
 
   def current_user
@@ -21,8 +26,4 @@ class ApplicationController < ActionController::Base
     I18n.locale = session[:locale] || I18n.default_locale
   end
 
-  def change_locale
-    set_locale
-    redirect_to request.referer || root_url
-  end
 end

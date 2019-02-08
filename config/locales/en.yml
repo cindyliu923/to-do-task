@@ -17,6 +17,8 @@ en:
     priority: "Priority"
     messages:
       destroy: "Are you sure?"
+  admin:
+    title: "Admin"
   tasks:
     titles: "To Do task"
     title: "Task title"
