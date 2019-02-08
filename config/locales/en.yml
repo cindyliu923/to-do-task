@@ -39,6 +39,7 @@ en:
       create: "Task was failed to create!"
       update: "Task was failed to update!"
       destroy: "Task was deleted!"
+      permit: "Not allow!"
   users:
     signup: "Sign Up"
     login: "Log In"
