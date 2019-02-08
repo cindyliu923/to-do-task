@@ -1,8 +1,8 @@
 en:
   helpers:
     submit:
-      create: "Create Task"
-      update: "Update Task"
+      create: "Create"
+      update: "Update"
   common:
     locale:
       en: "English"
@@ -50,7 +50,13 @@ en:
     email: "Email"
     password: "Password"
     password_confirmation: "Password confirmation"
+    notice:
+      create: "User was successfully created!"
+      update: "User was successfully updated!"
     alert:
+      create: "User was failed to create!"
+      update: "User was failed to update!"
+      destroy: "User was deleted!"
       login: "Invalid email or password!"
   activerecord:
     errors:

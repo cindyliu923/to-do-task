@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col align-self-center">
+        <div class="p-4"></div>
+        <div class="card text-center">
+          <h3 class="card-header"><%= @user.name %></h3>
+          <div class="card-body">
+            <h5 class="card-title"><%= @user.email %></h5>
+            <p class="card-text"> </p>
+            <footer class="blockquote-footer"></footer>
+          </div>
+        </div>
+        <br>
+        <div class="text-right">
+          <%= link_to t("common.back_index"), admin_users_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
