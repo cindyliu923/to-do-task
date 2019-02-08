@@ -30,8 +30,8 @@ module Features
       click_button I18n.t("users.login")
     end
 
-    def log_in
-      @user = FactoryBot.create(:user)
+    def log_in_with_admin
+      @user = FactoryBot.create(:user, role: 'admin')
       visit login_path
       fill_in I18n.t("users.email"), with: @user.email
       fill_in I18n.t("users.password"), with: @user.password

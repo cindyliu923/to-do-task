@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "admin", :type => :feature do
 
   before(:each) do
-    log_in
+    log_in_with_admin
   end
 
   scenario "Update a user" do

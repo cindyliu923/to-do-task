@@ -44,7 +44,8 @@ RSpec.feature "users", :type => :feature do
 
   feature 'User with tasks' do
     scenario 'can not see tasks without login' do
-      visit '/'
+      visit login_path
+      click_link I18n.t("tasks.titles")
 
       expect(page).to have_content(I18n.t("users.login"))
       expect(page).to_not have_content(I18n.t("common.title"))
@@ -53,7 +54,7 @@ RSpec.feature "users", :type => :feature do
     scenario 'can not see other tasks' do
       task = FactoryBot.create(:task)
       task_other = FactoryBot.create(:task, user: user)
-      visit '/'
+      visit login_path
       log_in_with_task(task)
 
       expect(page).to have_content(task.title)
