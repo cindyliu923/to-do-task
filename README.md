@@ -34,6 +34,7 @@
 | email           | string   | 電子信箱      |
 | password_digest | string   | 密碼         |
 | tasks_count     | integer  | 任務數量      |
+| role            | string   | 角色         |
 
 ## Deploy
 
