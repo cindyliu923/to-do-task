@@ -29,7 +29,11 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(user_params)
+    if params[:role].present?
+      @user.update(role: params[:role])
+      flash[:notice] = I18n.t("users.notice.update")
+      redirect_to admin_users_path
+    elsif @user.update_attributes(user_params)
       flash[:notice] = I18n.t("users.notice.update")
       redirect_to admin_user_path(@user)
     else
