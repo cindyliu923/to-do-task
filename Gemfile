@@ -9,6 +9,7 @@ gem 'rails', '~> 5.2.2'
 gem 'pg'
 
 gem 'rails-i18n', '~> 5.1'
+gem 'cancancan', '~> 2.0'
 
 gem 'aasm'
 gem 'ransack'
