@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   helper_method :current_user
 
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:alert] = I18n.t("tasks.alert.permit")
+    redirect_to(request.referrer || root_path)
+  end
+
   def change_locale
     set_locale
     redirect_to request.referer || root_url
