@@ -50,6 +50,7 @@ zh-TW:
     email: "電子信箱"
     password: "密碼"
     password_confirmation: "密碼確認"
+    tasks_count: "任務數量"
     notice:
       update: "成功更新使用者！"
       create: "成功新增使用者！"

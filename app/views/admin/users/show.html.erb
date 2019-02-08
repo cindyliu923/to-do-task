@@ -8,7 +8,7 @@
           <div class="card-body">
             <h5 class="card-title"><%= @user.email %></h5>
             <p class="card-text"> </p>
-            <footer class="blockquote-footer"></footer>
+            <footer class="blockquote-footer"><%= t("users.tasks_count") %>: <%= @user.tasks_count %></footer>
           </div>
         </div>
         <br>

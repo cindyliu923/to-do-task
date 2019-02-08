@@ -1,6 +1,6 @@
 # to do task DB Schema
 
-###### 更新日期：2019-02-02 (規劃 DB Schema 與 Model 之間的關聯)
+###### 更新日期：2019-02-08 (規劃 DB Schema 與 Model 之間的關聯)
 
 ## Task
 
@@ -33,6 +33,7 @@
 | name            | string   | 姓名         |
 | email           | string   | 電子信箱      |
 | password_digest | string   | 密碼         |
+| tasks_count     | integer  | 任務數量      |
 
 ## Deploy
 
