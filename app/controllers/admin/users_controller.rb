@@ -7,6 +7,11 @@ class Admin::UsersController < ApplicationController
     @users = User.page(params[:page]).per(10)
   end
 
+  def show
+    @q = @user.tasks.ransack(params[:q])
+    @tasks = @q.result.page(params[:page]).per(10)
+  end
+
   def new
     @user = User.new
   end
@@ -45,7 +50,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def search_task
-    @q = current_user.tasks.ransack(params[:q])
+    @q = Task.ransack(params[:q])
   end
 
   def user_params
