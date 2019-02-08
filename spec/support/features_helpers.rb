@@ -22,8 +22,16 @@ module Features
       click_button I18n.t("users.signup")
     end
 
-    def log_in(task)
+    def log_in_with_task(task)
       @user = task.user
+      visit login_path
+      fill_in I18n.t("users.email"), with: @user.email
+      fill_in I18n.t("users.password"), with: @user.password
+      click_button I18n.t("users.login")
+    end
+
+    def log_in
+      @user = FactoryBot.create(:user)
       visit login_path
       fill_in I18n.t("users.email"), with: @user.email
       fill_in I18n.t("users.password"), with: @user.password

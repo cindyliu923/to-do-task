@@ -54,7 +54,7 @@ RSpec.feature "users", :type => :feature do
       task = FactoryBot.create(:task)
       task_other = FactoryBot.create(:task, user: user)
       visit '/'
-      log_in(task)
+      log_in_with_task(task)
 
       expect(page).to have_content(task.title)
       expect(page).to_not have_content(task_other.title)

@@ -4,11 +4,11 @@ RSpec.feature "tasks", :type => :feature do
 
   before(:each) do
     @task = FactoryBot.create(:task)
-    log_in(@task)
+    log_in_with_task(@task)
   end
 
   scenario "Update a task" do
-    visit "/tasks/1/edit"
+    visit "/tasks/#{@task.id}/edit"
     deadline = Timecop.travel('2019-02-10 15:20:00 +0800')
 
     fill_in I18n.t("tasks.title"), :with => "My edit task"
@@ -79,14 +79,14 @@ RSpec.feature "tasks", :type => :feature do
     select I18n.t("tasks.status.todo"), :from => I18n.t("common.status")
 
     click_button I18n.t('ransack.search')
-    expect(find('table tr:nth-child(2)')).to have_content('task title 9')
+    expect(find('table tr:nth-child(2)')).to have_content(@task.title)
     expect(find('table tr:nth-child(2)')).to have_content(I18n.t("tasks.status.todo"))
 
     click_link I18n.t("tasks.up")
     select I18n.t("tasks.status.doing"), :from => I18n.t("common.status")
     click_button I18n.t('ransack.search')
 
-    expect(find('table tr:nth-child(2)')).to have_content('task title 9')
+    expect(find('table tr:nth-child(2)')).to have_content(@task.title)
     expect(find('table tr:nth-child(2)')).to have_content(I18n.t("tasks.status.doing"))
     expect(find('table tr:nth-child(2)')).to have_content(I18n.t("tasks.down"))
 
@@ -94,7 +94,7 @@ RSpec.feature "tasks", :type => :feature do
     select I18n.t("tasks.status.done"), :from => I18n.t("common.status")
     click_button I18n.t('ransack.search')
 
-    expect(find('table tr:nth-child(2)')).to have_content('task title 9')
+    expect(find('table tr:nth-child(2)')).to have_content(@task.title)
     expect(find('table tr:nth-child(2)')).to have_content(I18n.t("tasks.status.done"))
     expect(find('table tr:nth-child(2)')).to have_content('')
   end

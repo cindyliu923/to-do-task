@@ -30,4 +30,11 @@ RSpec.describe User, type: :model do
     subject.password = "1"
     expect(subject).to_not be_valid
   end
+
+  it "when user delete user task delete too" do
+    user = FactoryBot.create(:user)
+    task = FactoryBot.create(:task, user: user)
+
+    expect { user.destroy }.to change { Task.count }.by(-1)
+  end
 end
