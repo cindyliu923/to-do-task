@@ -16,6 +16,8 @@ en:
     priority: "Priority"
     messages:
       destroy: "Are you sure?"
+    alert:
+      destroy: "Can not destroy！"
   admin:
     title: "Admin"
   tasks:

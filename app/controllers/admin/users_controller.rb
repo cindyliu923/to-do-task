@@ -39,9 +39,13 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    redirect_to admin_users_url
-    flash[:alert] = I18n.t("users.alert.destroy")
+    if @user.destroy
+      redirect_to admin_users_url
+      flash[:alert] = I18n.t("users.alert.destroy")
+    else
+      flash[:alert] = I18n.t("common.alert.destroy")
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private

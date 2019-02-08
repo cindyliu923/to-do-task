@@ -16,6 +16,8 @@ zh-TW:
     priority: "優先順序"
     messages:
       destroy: "確定要刪除嗎？"
+    alert:
+      destroy: "不能刪除！"
   admin:
     title: "管理"
   tasks:
