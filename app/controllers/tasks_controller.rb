@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
   before_action { authorize! :manage, Task }
-  before_action :authorize
   before_action :set_task, :only => [:show, :edit, :update, :destroy, :up, :down]
   before_action :search_task, :except =>[:up, :down]
 

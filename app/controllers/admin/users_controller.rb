@@ -1,6 +1,5 @@
 class Admin::UsersController < ApplicationController
   before_action { authorize! :manage, :all }
-  before_action :authorize
   before_action :set_user, :only => [:show, :edit, :update, :destroy]
   before_action :search_task
 

@@ -43,7 +43,7 @@ zh-TW:
       update: "更新任務失敗！"
       create: "新增任務失敗！"
       destroy: "任務已刪除！"
-      permit: "不能允許進入此頁!"
+      permit: "不允許進入此頁!"
   users:
     new: "新增使用者"
     signup: "註冊"
