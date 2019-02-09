@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:alert] = I18n.t("tasks.alert.permit")
-    redirect_to(request.referrer || root_path)
+    redirect_to(request.referrer || '/login')
   end
 
   def change_locale
