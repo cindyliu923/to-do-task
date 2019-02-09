@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :tag do
-    
+    sequence(:name) { |n| "Tag_#{n}" }
   end
+
   factory :user do
     sequence(:name) { |n| "Default_#{n}" }
     sequence(:email) { |n| "default_#{n}@example.com" }
