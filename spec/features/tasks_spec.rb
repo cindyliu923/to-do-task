@@ -73,8 +73,15 @@ RSpec.feature "tasks", :type => :feature do
     expect(find('table tr:nth-child(4)')).to have_content(deadline_earlier_task.title)
   end
 
-  scenario "Search tasks by title, status and can change task status" do
+  scenario "Search tasks by title, status, tag and can change task status" do
+    @task.tags.create(name: 'Tag1')
     visit "/"
+
+    select 'Tag1', :from => I18n.t("tag.title")
+    click_button I18n.t('ransack.search')
+
+    expect(find('table tr:nth-child(2)')).to have_content(@task.title)
+
     fill_in I18n.t("common.title"), :with => "task"
     select I18n.t("tasks.status.todo"), :from => I18n.t("common.status")
 
