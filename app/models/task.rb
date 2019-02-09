@@ -29,6 +29,16 @@ class Task < ApplicationRecord
     I18n.t("tasks.priority.#{self.priority}")
   end
 
+  def tag_list
+    tags.map(&:name).join(', ')
+  end
+
+  def tag_list=(names)
+    self.tags = names.split(',').map do |item|
+      Tag.where(name: item.strip).first_or_create!
+    end
+  end
+
   class << self
 
     def select_options_by_priority
@@ -37,6 +47,10 @@ class Task < ApplicationRecord
 
     def select_options_by_status
       statuses.map{|k,v| [I18n.t("tasks.status.#{k}"), v]}
+    end
+
+    def tagged_with(name)
+      Tag.find_by!(name: name).tasks
     end
 
   end

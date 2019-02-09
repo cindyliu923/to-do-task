@@ -20,6 +20,8 @@ en:
       destroy: "Can not destroy！"
   admin:
     title: "Admin"
+  tag:
+    title: "Tag"
   tasks:
     titles: "To Do task"
     title: "Task title"

@@ -21,6 +21,10 @@
               <%= f.text_area :content, class: "form-control" %>
             </div>
             <div class="form-group">
+              <%= f.label :tag_list, t("tag.title") %>
+              <%= f.text_field :tag_list, class: "form-control" %>
+            </div>
+            <div class="form-group">
               <%= f.label :deadline, t("tasks.deadline") %>
               <%= f.text_field :deadline, id: 'datetimepicker', class: "form-control" %>
             </div>

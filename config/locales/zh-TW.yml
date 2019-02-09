@@ -20,6 +20,8 @@ zh-TW:
       destroy: "不能刪除！"
   admin:
     title: "管理"
+  tag:
+    title: "標籤"
   tasks:
     titles: "代辦任務"
     title: "任務標題"

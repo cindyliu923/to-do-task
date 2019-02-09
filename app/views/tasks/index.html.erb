@@ -5,6 +5,7 @@
         <table class="table table-hover text-center">
           <tr>
             <th scope="col"><%= t("common.title") %></th>
+            <th scope="col"><%= t("tag.title") %></th>
             <th scope="col"><%= sort_link(@q, :deadline, t("tasks.deadline"), default_order: :asc) %></th>
             <th scope="col"><%= t("common.status") %></th>
             <th scope="col"><%= sort_link(@q, :priority, t("common.priority"), default_order: :desc) %></th>
@@ -15,6 +16,7 @@
           <% @tasks.each do |task| %>
             <tr>
               <td><%= link_to task.title, task_path(task) %></td>
+              <td><%= task.tag_list %></td>
               <td><%= task.deadline %></td>
               <td><%= task.localized_status %></td>
               <td><%= task.localized_priority %></td>
