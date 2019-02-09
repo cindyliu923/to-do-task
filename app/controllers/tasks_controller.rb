@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   before_action :search_task, :except =>[:up, :down]
 
   def index
-    @tasks = @q.result.order(created_at: :desc).page(params[:page]).per(10)
+    @tasks = @q.result.includes(:tags).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def new
