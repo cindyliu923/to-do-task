@@ -13,17 +13,17 @@
 | priority   | integer  | 優先順序      |
 | user_id    | bigint   | 使用者        |
 
-## Category
+## Tag
 
 | Field      | Type     | Description  |
 |------------|----------|--------------|
-| name       | string   | 種類        |
+| name       | string   | 標籤          |
 
-## Tasks Categories
+## Tags Tasks
 
 | Field      | Type     | Description  |
 |------------|----------|--------------|
-| category_id| integer  | 種類         |
+| tag_id     | integer  | 標籤         |
 | task_id    | integer  | 任務         |
 
 ## User

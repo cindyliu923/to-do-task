@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   include AASM
+  has_and_belongs_to_many :tags
   belongs_to :user, :counter_cache => true
 
   validates :title, :content, presence: true
