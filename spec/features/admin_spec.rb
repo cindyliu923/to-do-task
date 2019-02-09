@@ -10,10 +10,22 @@ RSpec.feature "admin", :type => :feature do
     visit "/admin/users/#{@user.id}/edit"
 
     fill_in I18n.t("users.name"), with: "name"
+    select I18n.t("users.role.admin"), :from => I18n.t("users.roles")
     fill_in I18n.t("users.email"), with: 'valid@example.com'
     fill_in I18n.t("users.password"), with: "password"
     fill_in I18n.t("users.password_confirmation"), with: "password"
     click_button I18n.t("helpers.submit.update")
+
+    expect(page).to have_text(I18n.t("users.notice.update"))
+  end
+
+  scenario "Update a user role" do
+
+    user = FactoryBot.create(:user)
+    visit "/admin/users"
+
+    find('table tr:nth-child(2)').select I18n.t("users.role.admin")
+    find('table tr:nth-child(2)').click_button I18n.t("helpers.submit.update")
 
     expect(page).to have_text(I18n.t("users.notice.update"))
   end
@@ -35,20 +47,29 @@ RSpec.feature "admin", :type => :feature do
     user = FactoryBot.create(:user)
     visit "/admin/users"
 
-    expect { find('table tr:nth-child(3)').click_link I18n.t("common.destroy") }.to change(User, :count).by(-1)
+    expect { find('table tr:nth-child(2)').click_link I18n.t("common.destroy") }.to change(User, :count).by(-1)
     expect(page).to have_text(I18n.t("users.alert.destroy"))
+  end
+
+  scenario "Can not destroy a user for last admin" do
+    user = FactoryBot.create(:user,role: 'normal')
+    visit "/admin/users"
+    find('table tr:nth-child(3)').click_link I18n.t("common.destroy")
+
+    expect(page).to have_text(I18n.t("common.alert.destroy"))
+    expect(page).to_not have_text(I18n.t("users.alert.destroy"))
   end
 
   scenario "See users list and user tasks count" do
     user = FactoryBot.create(:user)
     visit "/admin/users"
 
-    expect(find('table tr:nth-child(2)')).to have_content(@user.name)
-    expect(find('table tr:nth-child(2)')).to have_content(@user.email)
-    expect(find('table tr:nth-child(2)')).to have_content(@user.tasks_count)
-    expect(find('table tr:nth-child(3)')).to have_content(user.name)
-    expect(find('table tr:nth-child(3)')).to have_content(user.email)
-    expect(find('table tr:nth-child(3)')).to have_content(user.tasks_count)
+    expect(find('table tr:nth-child(2)')).to have_content(user.name)
+    expect(find('table tr:nth-child(2)')).to have_content(user.email)
+    expect(find('table tr:nth-child(2)')).to have_content(user.tasks_count)
+    expect(find('table tr:nth-child(3)')).to have_content(@user.name)
+    expect(find('table tr:nth-child(3)')).to have_content(@user.email)
+    expect(find('table tr:nth-child(3)')).to have_content(@user.tasks_count)
   end
 
   scenario "See user and tasks" do

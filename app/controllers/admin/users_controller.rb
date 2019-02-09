@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
   before_action :search_task
 
   def index
-    @users = User.page(params[:page]).per(10)
+    @users = User.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
@@ -29,9 +29,13 @@ class Admin::UsersController < ApplicationController
 
   def update
     if params[:role].present?
-      @user.update(role: params[:role])
-      flash[:notice] = I18n.t("users.notice.update")
-      redirect_to admin_users_path
+      if @user.update(role: params[:role])
+        flash[:notice] = I18n.t("users.notice.update")
+        redirect_to admin_users_path
+      else
+        flash[:alert] = I18n.t("users.alert.update")
+        redirect_back(fallback_location: admin_users_path)
+      end
     elsif @user.update_attributes(user_params)
       flash[:notice] = I18n.t("users.notice.update")
       redirect_to admin_user_path(@user)
@@ -47,7 +51,7 @@ class Admin::UsersController < ApplicationController
       flash[:alert] = I18n.t("users.alert.destroy")
     else
       flash[:alert] = I18n.t("common.alert.destroy")
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: admin_users_path)
     end
   end
 
