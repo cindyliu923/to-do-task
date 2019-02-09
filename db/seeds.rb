@@ -8,6 +8,7 @@
 User.create(
   name: 'Default',
   email: 'default@example.com',
-  password: '123456'
+  password: '123456',
+  role: 'admin'
   )
-puts 'Default user created'
+puts 'Default admin user created'
