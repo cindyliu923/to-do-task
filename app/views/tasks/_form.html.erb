@@ -45,12 +45,11 @@
     $("#task_tag_items").select2({
       theme: "bootstrap",
       tags: true,
-      tokenSeparators: [',', ' '],
+      tokenSeparators: [',', ';', '，', '；', ' '],
       // 為了可以輸入中文
       createTag: function(params) {
-        if (params.term.indexOf(' ') > 0 || params.term.indexOf(',') > 0) {
-          var str = params.term;
-          str = str.substr(1);
+        if (/[,;，； ]/.test(params.term)) {
+          var str = params.term.trim().replace(/[,;，；]*$/, '');
           return {
             id: str,
             text: str
