@@ -29,6 +29,15 @@ class Task < ApplicationRecord
     I18n.t("tasks.priority.#{self.priority}")
   end
 
+  def tag_items
+    tags.map(&:name)
+  end
+
+  def tag_items=(names)
+    self.tags = names.map{|item|
+      Tag.where(name: item.strip).first_or_create! unless item.blank?}.compact!
+  end
+
   def tag_list
     tags.map(&:name).join(', ')
   end
