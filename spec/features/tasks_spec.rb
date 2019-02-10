@@ -8,6 +8,7 @@ RSpec.feature "tasks", :type => :feature do
   end
 
   scenario "Update a task" do
+    tag = FactoryBot.create(:tag)
     visit "/tasks/#{@task.id}/edit"
     deadline = Timecop.travel('2019-02-10 15:20:00 +0800')
 
@@ -15,11 +16,14 @@ RSpec.feature "tasks", :type => :feature do
     fill_in I18n.t("tasks.content"), :with => "My edit task content"
     fill_in "task[deadline]", :with => deadline
     select I18n.t("tasks.priority.medium"), :from => I18n.t("common.priority")
+    find("#task_tag_items").select(tag.name)
 
     click_button I18n.t("helpers.submit.update")
 
     expect(page).to have_text(I18n.t("tasks.notice.update"))
     expect(page).to have_content('My edit task')
+    expect(page).to have_content('My edit task content')
+    expect(page).to have_content(tag.name)
     expect(page).to have_content(deadline)
     expect(page).to have_content(I18n.t("tasks.priority.medium"))
   end
