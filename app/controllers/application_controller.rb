@@ -1,11 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_locale
+  before_action :search_task
   helper_method :current_user
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:alert] = I18n.t("tasks.alert.permit")
-    redirect_to(request.referrer || '/login')
+    redirect_to request.referrer || '/login'
   end
 
   def change_locale
@@ -25,6 +26,14 @@ class ApplicationController < ActionController::Base
     end
 
     I18n.locale = session[:locale] || I18n.default_locale
+  end
+
+  def search_task
+    if current_user.present?
+      @q = current_user.tasks.ransack(params[:q])
+    else
+      @q = Task.ransack(params[:q])
+    end
   end
 
 end

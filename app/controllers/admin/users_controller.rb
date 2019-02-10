@@ -1,7 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action { authorize! :manage, :all }
   before_action :set_user, :only => [:show, :edit, :update, :destroy]
-  before_action :search_task
 
   def index
     @users = User.order(created_at: :desc).page(params[:page]).per(10)
@@ -20,10 +19,10 @@ class Admin::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice] = I18n.t("users.notice.create")
-      redirect_to admin_users_url
+      redirect_to admin_users_path
     else
       flash.now[:alert] = I18n.t("users.alert.create")
-      render :action => :new
+      render :new
     end
   end
 
@@ -41,13 +40,13 @@ class Admin::UsersController < ApplicationController
       redirect_to admin_user_path(@user)
     else
       flash.now[:alert] = I18n.t("users.alert.update")
-      render :action => :edit
+      render :edit
     end
   end
 
   def destroy
     if @user.destroy
-      redirect_to admin_users_url
+      redirect_to admin_users_path
       flash[:alert] = I18n.t("users.alert.destroy")
     else
       flash[:alert] = I18n.t("common.alert.destroy")
@@ -59,10 +58,6 @@ class Admin::UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def search_task
-    @q = Task.ransack(params[:q])
   end
 
   def user_params

@@ -1,7 +1,6 @@
 class TasksController < ApplicationController
   before_action { authorize! :manage, Task }
   before_action :set_task, :only => [:show, :edit, :update, :destroy, :up, :down]
-  before_action :search_task, :except =>[:up, :down]
 
   def index
     @tasks = @q.result.includes(:tags).order(created_at: :desc).page(params[:page]).per(10)
@@ -16,10 +15,10 @@ class TasksController < ApplicationController
     @task.user = current_user
     if @task.save
       flash[:notice] = I18n.t("tasks.notice.create")
-      redirect_to tasks_url
+      redirect_to tasks_path
     else
       flash.now[:alert] = I18n.t("tasks.alert.create")
-      render :action => :new
+      render :new
     end
   end
 
@@ -29,13 +28,13 @@ class TasksController < ApplicationController
       redirect_to task_path(@task)
     else
       flash.now[:alert] = I18n.t("tasks.alert.update")
-      render :action => :edit
+      render :edit
     end
   end
 
   def destroy
     @task.destroy
-    redirect_to tasks_url
+    redirect_to tasks_path
     flash[:alert] = I18n.t("tasks.alert.destroy")
   end
 
@@ -57,10 +56,6 @@ class TasksController < ApplicationController
       flash[:alert] = I18n.t("tasks.alert.permit")
       redirect_to root_path
     end
-  end
-
-  def search_task
-    @q = current_user.tasks.ransack(params[:q])
   end
 
   def task_params

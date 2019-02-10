@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
       flash.now[:alert] = I18n.t("users.alert.login")
-      render :action => :new
+      render :new
     end
   end
 
