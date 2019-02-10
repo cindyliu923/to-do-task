@@ -3,7 +3,7 @@ namespace :dev do
   task fake_user: :environment do
     # User.destroy_all
     10.times do |i|
-      user = User.create!(
+      User.create!(
         name: FFaker::NameJA.name,
         email: "user#{i}@example.co",
         password: "123456"
@@ -26,6 +26,15 @@ namespace :dev do
         user: User.all.sample
       )
     end
+
+    names = ([''] + ["美食","時尚","教育","新聞","娛樂"].sample(2))
+
+    Task.find_in_batches( :batch_size => 100 ) do |tasks|
+      tasks.each do |task|
+        task.tags.tag_items=(names)
+      end
+    end
+
     puts "have created fake tasks"
     puts "now you have #{Task.count} tasks data"
   end
