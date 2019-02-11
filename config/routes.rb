@@ -15,6 +15,10 @@ Rails.application.routes.draw do
       patch :up
       patch :down
     end
+
+    collection do
+      match 'search' => 'tasks#search', via: [:get, :post], as: :search
+    end
   end
 
   namespace :admin do

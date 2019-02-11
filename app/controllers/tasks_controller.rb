@@ -6,6 +6,16 @@ class TasksController < ApplicationController
     @tasks = @q.result.includes(:tags).order(created_at: :desc).page(params[:page]).per(10)
   end
 
+  def search
+    if params[:user_id].present?
+      index
+      render 'admin/users/show'
+    else
+      index
+      render :index
+    end
+  end
+
   def new
     @task = Task.new
   end
