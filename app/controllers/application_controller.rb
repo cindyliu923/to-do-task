@@ -5,8 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:alert] = I18n.t("tasks.alert.permit")
-    redirect_to request.referrer || '/login'
+    render file: "#{Rails.root}/public/401", layout: false
   end
 
   def change_locale
