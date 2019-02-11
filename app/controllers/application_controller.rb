@@ -2,10 +2,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_locale
   before_action :search_task
-  helper_method :current_user
+  helper_method [:current_user, :logged_in?]
 
   rescue_from CanCan::AccessDenied do |exception|
-    render_unauthorized
+    if logged_in?
+      render_unauthorized
+    else
+      redirect_to '/login'
+    end
   end
 
   def change_locale
@@ -23,6 +27,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  def logged_in?
+    !current_user.nil?
+  end
+
   def set_locale
     if params[:locale] && I18n.available_locales.include?( params[:locale].to_sym )
       session[:locale] = params[:locale]
@@ -38,7 +46,7 @@ class ApplicationController < ActionController::Base
     elsif current_user.present?
       @q = current_user.tasks.ransack(params[:q])
     else
-      @q = Task.ransack(params[:q])
+      @q = nil
     end
   end
 
