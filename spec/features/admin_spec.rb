@@ -83,4 +83,27 @@ RSpec.feature "admin", :type => :feature do
     expect(page).to have_content(task.title)
   end
 
+  scenario "Search other user tasks by title, status, tag" do
+    user = FactoryBot.create(:user)
+    task = FactoryBot.create(:task, user: user)
+    task.tags.create(name: 'Tag1')
+    visit "/admin/users/#{user.id}"
+
+    select 'Tag1', :from => I18n.t("tag.title")
+    click_button I18n.t('ransack.search')
+
+    expect(find('table tr:nth-child(2)')).to have_content(task.title)
+
+    fill_in I18n.t("common.title"), :with => "task"
+    click_button I18n.t('ransack.search')
+
+    expect(find('table tr:nth-child(2)')).to have_content(task.title)
+
+    select I18n.t("tasks.status.todo"), :from => I18n.t("common.status")
+    click_button I18n.t('ransack.search')
+
+    expect(find('table tr:nth-child(2)')).to have_content(task.title)
+    expect(find('table tr:nth-child(2)')).to have_content(I18n.t("tasks.status.todo"))
+  end
+
 end

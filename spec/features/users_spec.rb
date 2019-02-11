@@ -44,8 +44,7 @@ RSpec.feature "users", :type => :feature do
 
   feature 'User with tasks' do
     scenario 'can not see tasks without login' do
-      visit login_path
-      click_link I18n.t("tasks.titles")
+      visit '/'
 
       expect(page).to have_content(I18n.t("users.login"))
       expect(page).to_not have_content(I18n.t("common.title"))
