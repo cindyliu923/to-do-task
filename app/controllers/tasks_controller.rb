@@ -53,8 +53,7 @@ class TasksController < ApplicationController
   def set_task
     @task = Task.find(params[:id])
     unless @task.user == current_user
-      flash[:alert] = I18n.t("tasks.alert.permit")
-      redirect_to root_path
+      render_unauthorized
     end
   end
 

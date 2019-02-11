@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   rescue_from CanCan::AccessDenied do |exception|
-    render file: "#{Rails.root}/public/401", layout: false
+    render_unauthorized
   end
 
   def change_locale
@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+  def render_unauthorized
+    render file: "#{Rails.root}/public/401", layout: false
+  end
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
