@@ -28,13 +28,7 @@ class Admin::UsersController < ApplicationController
 
   def update
     if params[:role].present?
-      if @user.update(role: params[:role])
-        flash[:notice] = I18n.t("users.notice.update")
-        redirect_to admin_users_path
-      else
-        flash[:alert] = I18n.t("users.alert.update")
-        redirect_back(fallback_location: admin_users_path)
-      end
+      update_role
     elsif @user.update_attributes(user_params)
       flash[:notice] = I18n.t("users.notice.update")
       redirect_to admin_user_path(@user)
@@ -58,6 +52,16 @@ class Admin::UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def update_role
+    if @user.update(role: params[:role])
+      flash[:notice] = I18n.t("users.notice.update")
+      redirect_to admin_users_path
+    else
+      flash[:alert] = I18n.t("users.alert.update")
+      redirect_back(fallback_location: admin_users_path)
+    end
   end
 
   def user_params
