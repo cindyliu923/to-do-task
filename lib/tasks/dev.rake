@@ -27,11 +27,10 @@ namespace :dev do
       )
     end
 
-    names = ([''] + ["美食","時尚","教育","新聞","娛樂"].sample(2))
-
     Task.find_in_batches( :batch_size => 100 ) do |tasks|
       tasks.each do |task|
-        task.tags.tag_items=(names)
+        names = ([''] + ["美食","時尚","教育","新聞","娛樂","音樂"].sample(2))
+        task.tag_items=(names)
       end
     end
 
