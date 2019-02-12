@@ -60,6 +60,20 @@
       }
     });
 
+    // 為了可以直接 enter
+    $(document).on('keyup', '.select2-selection--multiple .select2-search__field', function(event){
+      if(event.keyCode == 13){
+        var $this = $(this);
+        var optionText = $this.val();
+        if(optionText != "" && $this.find("option[value='" + optionText + "']").length === 0){
+          var $select = $this.parents('.select2-container').prev("select");
+          var newOption = new Option(optionText, optionText, true, true);
+          $select.append(newOption).trigger('change');
+          $this.val('');
+        }
+      }
+    });
+
     $('#datetimepicker').datetimepicker();
   });
 </script>
