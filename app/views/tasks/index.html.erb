@@ -2,9 +2,10 @@
   <div class="container-fluid">
     <section class="jumbotron text-center">
       <div class="container">
-        <h3><%= t("tasks.order") %></h3>
+        <h4><%= t("tasks.titles") %></h4>
         <div class="btn btn-light">
           <%= sort_link(@q, :deadline, t("tasks.deadline"), default_order: :asc) %>
+          <small class="text-muted"><%= t("tasks.order") %></small>
           <%= sort_link(@q, :priority, t("common.priority"), default_order: :desc) %>
         </div>
       </div>
