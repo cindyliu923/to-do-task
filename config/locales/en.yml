@@ -23,6 +23,7 @@ en:
   tag:
     title: "Tag"
   tasks:
+    order: "Choose the sort you want"
     titles: "To Do task"
     title: "Task title"
     content: "Task content"

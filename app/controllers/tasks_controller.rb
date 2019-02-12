@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :set_task, :only => [:show, :edit, :update, :destroy, :up, :down]
 
   def index
-    @tasks = @q.result.includes(:tags).order(created_at: :desc).page(params[:page]).per(10)
+    @tasks = @q.result.includes(:tags).order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def search

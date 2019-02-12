@@ -23,6 +23,7 @@ zh-TW:
   tag:
     title: "標籤"
   tasks:
+    order: "選擇你要的排序吧"
     titles: "待辦任務"
     title: "任務標題"
     content: "任務內容"
