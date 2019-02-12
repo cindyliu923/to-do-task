@@ -23,8 +23,8 @@
 
 | Field      | Type     | Description  |
 |------------|----------|--------------|
-| tag_id     | integer  | 標籤         |
-| task_id    | integer  | 任務         |
+| tag_id     | bigint   | 標籤         |
+| task_id    | bigint   | 任務         |
 
 ## User
 
