@@ -56,8 +56,10 @@ RSpec.feature "tasks", :type => :feature do
     @new_task = FactoryBot.create(:task, user: @task.user)
     visit "/"
 
-    expect(find('table tr:nth-child(2)')).to have_content(@new_task.title)
-    expect(find('table tr:nth-child(3)')).to have_content(@task.title)
+    cards = page.all('.card-deck')
+
+    expect(cards[0]).to have_content(@new_task.title)
+    expect(cards[1]).to have_content(@task.title)
   end
 
   scenario "Change tasks order by deadline" do
@@ -66,15 +68,19 @@ RSpec.feature "tasks", :type => :feature do
     visit "/"
     click_link I18n.t("tasks.deadline")
 
-    expect(find('table tr:nth-child(2)')).to have_content(deadline_earlier_task.title)
-    expect(find('table tr:nth-child(3)')).to have_content(@task.title)
-    expect(find('table tr:nth-child(4)')).to have_content(deadline_later_task.title)
+    cards = page.all('.card-deck')
+
+    expect(cards[0]).to have_content(deadline_earlier_task.title)
+    expect(cards[1]).to have_content(@task.title)
+    expect(cards[2]).to have_content(deadline_later_task.title)
 
     click_link I18n.t("tasks.deadline")
 
-    expect(find('table tr:nth-child(2)')).to have_content(deadline_later_task.title)
-    expect(find('table tr:nth-child(3)')).to have_content(@task.title)
-    expect(find('table tr:nth-child(4)')).to have_content(deadline_earlier_task.title)
+    cards = page.all('.card-deck')
+
+    expect(cards[0]).to have_content(deadline_later_task.title)
+    expect(cards[1]).to have_content(@task.title)
+    expect(cards[2]).to have_content(deadline_earlier_task.title)
   end
 
   scenario "Search tasks by title, status, tag and can change task status" do
@@ -84,30 +90,30 @@ RSpec.feature "tasks", :type => :feature do
     select 'Tag1', :from => I18n.t("tag.title")
     click_button I18n.t('ransack.search')
 
-    expect(find('table tr:nth-child(2)')).to have_content(@task.title)
+    expect(first('.card-deck')).to have_content(@task.title)
 
     fill_in I18n.t("common.title"), :with => "task"
     select I18n.t("tasks.status.todo"), :from => I18n.t("common.status")
 
     click_button I18n.t('ransack.search')
-    expect(find('table tr:nth-child(2)')).to have_content(@task.title)
-    expect(find('table tr:nth-child(2)')).to have_content(I18n.t("tasks.status.todo"))
+    expect(first('.card-deck')).to have_content(@task.title)
+    expect(first('.card-deck')).to have_content(I18n.t("tasks.status.todo"))
 
     click_link I18n.t("tasks.up")
     select I18n.t("tasks.status.doing"), :from => I18n.t("common.status")
     click_button I18n.t('ransack.search')
 
-    expect(find('table tr:nth-child(2)')).to have_content(@task.title)
-    expect(find('table tr:nth-child(2)')).to have_content(I18n.t("tasks.status.doing"))
-    expect(find('table tr:nth-child(2)')).to have_content(I18n.t("tasks.down"))
+    expect(first('.card-deck')).to have_content(@task.title)
+    expect(first('.card-deck')).to have_content(I18n.t("tasks.status.doing"))
+    expect(first('.card-deck')).to have_content(I18n.t("tasks.down"))
 
     click_link I18n.t("tasks.down")
     select I18n.t("tasks.status.done"), :from => I18n.t("common.status")
     click_button I18n.t('ransack.search')
 
-    expect(find('table tr:nth-child(2)')).to have_content(@task.title)
-    expect(find('table tr:nth-child(2)')).to have_content(I18n.t("tasks.status.done"))
-    expect(find('table tr:nth-child(2)')).to have_content('')
+    expect(first('.card-deck')).to have_content(@task.title)
+    expect(first('.card-deck')).to have_content(I18n.t("tasks.status.done"))
+    expect(first('.card-deck')).to have_content('')
   end
 
   scenario "Change tasks order by priority" do
@@ -116,15 +122,19 @@ RSpec.feature "tasks", :type => :feature do
     visit "/"
     click_link I18n.t("common.priority")
 
-    expect(find('table tr:nth-child(2)')).to have_content(high_task.title)
-    expect(find('table tr:nth-child(3)')).to have_content(medium_task.title)
-    expect(find('table tr:nth-child(4)')).to have_content(@task.title)
+    cards = page.all('.card-deck')
+
+    expect(cards[0]).to have_content(high_task.title)
+    expect(cards[1]).to have_content(medium_task.title)
+    expect(cards[2]).to have_content(@task.title)
 
     click_link I18n.t("tasks.deadline")
 
-    expect(find('table tr:nth-child(2)')).to have_content(@task.title)
-    expect(find('table tr:nth-child(3)')).to have_content(medium_task.title)
-    expect(find('table tr:nth-child(4)')).to have_content(high_task.title)
+    cards = page.all('.card-deck')
+
+    expect(cards[0]).to have_content(@task.title)
+    expect(cards[1]).to have_content(medium_task.title)
+    expect(cards[2]).to have_content(high_task.title)
   end
 
 end
