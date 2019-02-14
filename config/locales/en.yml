@@ -86,5 +86,9 @@ en:
               blank: "Name can't be blank！"
             email:
               blank: "Email can't be blank！"
+              invalid: "Email is invalid！"
             password:
               blank: "Password can't be blank！"
+              too_short: "Password is too short (minimum is 6 characters)！"
+            password_confirmation:
+              confirmation: "Password confirmation doesn't match Password！"

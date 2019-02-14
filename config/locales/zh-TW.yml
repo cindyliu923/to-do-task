@@ -86,8 +86,12 @@ zh-TW:
               blank: "名稱不能空白！"
             email:
               blank: "電子信箱不能空白！"
+              invalid: "電子信箱是無效的！"
             password:
               blank: "密碼不能空白！"
+              too_short: "密碼過短（最短是 6 個字）！"
+            password_confirmation:
+              confirmation: "密碼兩次輸入須一致！"
   views:
     pagination:
       first: "&laquo; 第一頁"
