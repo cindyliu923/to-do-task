@@ -4,6 +4,7 @@ en:
       create: "Create"
       update: "Update"
   common:
+    hi: "Hi"
     locale:
       en: "English"
       zh-TW: "中文版"
@@ -51,6 +52,7 @@ en:
     new: "New user"
     signup: "Sign Up"
     login: "Log In"
+    logout: "Log Out"
     name: "Name"
     email: "Email"
     password: "Password"
