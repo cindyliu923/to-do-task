@@ -43,8 +43,8 @@
           <% end %>
         </ul>
         <ul class="navbar-nav ml-auto">
-          <li class="nav-link active badge badge-light"><%= link_to t("common.locale.zh-TW"), change_locale_path(:locale => "zh-TW") %></li>
-          <li class="nav-link active badge badge-light"><%= link_to t("common.locale.en"), change_locale_path(:locale => "en") %></li>
+          <li class="nav-link active badge badge-light"><%= link_to t("common.locale.zh-TW"), change_locale_path(:locale => "zh-TW"), method: :post %></li>
+          <li class="nav-link active badge badge-light"><%= link_to t("common.locale.en"), change_locale_path(:locale => "en"), method: :post %></li>
         </ul>
       </div>
     </nav>
