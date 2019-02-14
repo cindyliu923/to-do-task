@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def render_unauthorized
-    render file: "#{Rails.root}/public/401", layout: false
+    render file: "#{Rails.root}/public/401", layout: false, status: 401
   end
 
   def current_user
