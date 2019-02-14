@@ -19,6 +19,7 @@ en:
       destroy: "Are you sure?"
     alert:
       destroy: "Can not destroy！"
+      login: "You are already signed in"
   admin:
     title: "Admin"
   tag:

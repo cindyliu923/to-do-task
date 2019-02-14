@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
 
   def new
-    @user = User.new
+    if logged_in?
+      flash[:alert] = I18n.t("common.alert.login")
+      redirect_to root_path
+    else
+      @user = User.new
+    end
   end
 
   def create

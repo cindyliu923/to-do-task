@@ -19,6 +19,7 @@ zh-TW:
       destroy: "確定要刪除嗎？"
     alert:
       destroy: "不能刪除！"
+      login: "你已經登入了！"
   admin:
     title: "管理"
   tag:

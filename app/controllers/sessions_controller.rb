@@ -1,5 +1,12 @@
 class SessionsController < ApplicationController
 
+  def new
+    if logged_in?
+      flash[:alert] = I18n.t("common.alert.login")
+      redirect_to root_path
+    end
+  end
+
   def create
     user = User.find_by_email(user_params[:email])
     if user && user.authenticate(user_params[:password])
