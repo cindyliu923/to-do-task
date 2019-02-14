@@ -1,11 +1,5 @@
 class SessionsController < ApplicationController
-
-  def new
-    if logged_in?
-      flash[:alert] = I18n.t("common.alert.login")
-      redirect_to root_path
-    end
-  end
+  before_action :check_logged_in, except: :destroy
 
   def create
     user = User.find_by_email(user_params[:email])

@@ -31,6 +31,13 @@ class ApplicationController < ActionController::Base
     !current_user.nil?
   end
 
+  def check_logged_in
+    if logged_in?
+      flash[:alert] = I18n.t("common.alert.login")
+      redirect_to root_path
+    end
+  end
+
   def set_locale
     if params[:locale] && I18n.available_locales.include?( params[:locale].to_sym )
       session[:locale] = params[:locale]

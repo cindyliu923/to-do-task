@@ -1,16 +1,12 @@
 class UsersController < ApplicationController
+  before_action :check_logged_in
 
   def new
-    if logged_in?
-      flash[:alert] = I18n.t("common.alert.login")
-      redirect_to root_path
-    else
-      @user = User.new
-    end
+    @user = User.new
   end
 
   def create
-    @user = User.create(user_params)
+    @user = User.new(user_params)
     if @user.save
       redirect_to '/login'
     else
