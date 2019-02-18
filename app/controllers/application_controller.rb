@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Search
+
   protect_from_forgery with: :exception
   before_action :set_locale
   before_action :search_task
@@ -44,17 +46,6 @@ class ApplicationController < ActionController::Base
     end
 
     I18n.locale = session[:locale] || I18n.default_locale
-  end
-
-  def search_task
-    if params[:user_id].present?
-      @user = User.find(params[:user_id])
-      @q = @user.tasks.ransack(params[:q])
-    elsif current_user.present?
-      @q = current_user.tasks.ransack(params[:q])
-    else
-      @q = nil
-    end
   end
 
 end
