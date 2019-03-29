@@ -6,7 +6,7 @@
         <div class="card text-center">
           <h3 class="card-header"><%= @task.title %></h3>
           <div class="card-body">
-            <h5 class="card-title"><%= t("common.status") %>: <%= @task.localized_status %>, <%= t("common.priority") %>: <%= @task.localized_priority %></h5>
+            <h5 class="card-title"><%= t("common.status") %>: <%= localized_status(@task) %>, <%= t("common.priority") %>: <%= localized_priority(@task) %></h5>
             <p class="card-text"><%= t("tag.title") %>: <%= @task.tag_list %></p>
             <p class="card-text"><% @task.tag_list %><%= simple_format(@task.content) %></p>
             <footer class="blockquote-footer"><%= t("tasks.deadline") %>: <%= @task.deadline %></footer>

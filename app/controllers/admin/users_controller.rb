@@ -7,7 +7,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @q = @user.tasks.ransack(params[:q])
+    @q = @user.tasks.ransack(search_params)
     @tasks = @q.result.includes(:tags).order(created_at: :desc).page(params[:page]).per(8)
   end
 

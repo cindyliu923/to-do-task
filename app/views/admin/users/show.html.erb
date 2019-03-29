@@ -21,8 +21,8 @@
             <tr>
               <td><%= task.title %></td>
               <td><%= task.deadline %></td>
-              <td><%= task.localized_status %></td>
-              <td><%= task.localized_priority %></td>
+              <td><%= localized_status(task) %></td>
+              <td><%= localized_priority(task) %></td>
             </tr>
           <% end %>
         </table>

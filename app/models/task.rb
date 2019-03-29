@@ -21,12 +21,8 @@ class Task < ApplicationRecord
     end
   end
 
-  def localized_status
-    I18n.t("tasks.status.#{self.status}")
-  end
-
-  def localized_priority
-    I18n.t("tasks.priority.#{self.priority}")
+  def self.ransackable_attributes(auth_object = nil)
+    %w(title status)
   end
 
   def tag_items
