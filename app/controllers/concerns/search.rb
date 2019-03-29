@@ -15,7 +15,7 @@ module Search
   private
 
   def search_params
-    params.fetch(:q, {})&.permit(:title_cont, :tags_name_eq, :status_eq)
+    params.fetch(:q, {})&.permit(:s, :title_cont, :tags_name_eq, :status_eq)
   end
 
 end

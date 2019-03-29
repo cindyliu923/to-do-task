@@ -21,10 +21,6 @@ class Task < ApplicationRecord
     end
   end
 
-  def self.ransackable_attributes(auth_object = nil)
-    %w(title status)
-  end
-
   def tag_items
     tags.map(&:name)
   end
