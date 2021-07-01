@@ -15,7 +15,7 @@ gem 'aasm'
 gem 'ransack'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
-gem 'bootstrap', '~> 4.2.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'select2-rails', '~> 4.0', '>= 4.0.3'
 
