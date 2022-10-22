@@ -33,3 +33,4 @@
 /config/*.yml
 
 docker-compose.yml
+coverage
